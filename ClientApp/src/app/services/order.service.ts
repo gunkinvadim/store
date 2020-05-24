@@ -130,4 +130,8 @@ export class AppOrderService {
             hasError
         }
     }
+
+    clearOrder() {
+        this.data.orderData = {}
+    }
 }
