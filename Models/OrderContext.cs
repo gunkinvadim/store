@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace FTNET.Models
+namespace store.Models
 {
     public class OrderContext : DbContext
     {

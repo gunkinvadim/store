@@ -1,6 +1,6 @@
 using System;
 
-namespace FTNET
+namespace store
 {
     public class WeatherForecast
     {

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using FTNET.Models;
+using store.Models;
 
-namespace FTNET.Controllers
+namespace store.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

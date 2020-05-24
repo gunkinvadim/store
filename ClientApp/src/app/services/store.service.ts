@@ -120,7 +120,6 @@ export class AppStoreService {
 
         item.isLoading = true
         if (itemInCart) {
-            console.log(item, itemInCart)
             this.http.put(`api/CartItems/${itemInCart.id}`, {
                 id: itemInCart.id,
                 name: item.name,

@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using FTNET.Models;
+using store.Models;
 
-namespace FTNET
+namespace store
 {
     public class Startup
     {
