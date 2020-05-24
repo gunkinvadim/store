@@ -1,0 +1,56 @@
+<div>
+    <h3 class="step-title">Шаг 3</h3>
+
+    <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+    >
+
+        <div class="forminput">   
+            <label>СНИЛС (11 цифр):</label>
+            <input
+                name="insnum"
+                type="text"
+                class="input"
+                formControlName="insnum"
+                placeholder="СНИЛС"
+            />
+            <div
+                *ngIf="form.get('insnum').invalid && form.get('insnum').touched"
+                class="validation"
+            >
+                <span *ngIf="form.get('insnum').errors.required">
+                    Поле не может быть пустым
+                </span>
+                <span
+                    *ngIf="form.get('insnum').errors.minlength
+                    || form.get('insnum').errors.maxlength
+                    || form.get('insnum').errors.number"
+                >
+                    СНИЛС должен состоять из 11 цифр
+                </span>
+            </div>
+        </div> 
+        
+        <div class="forminput">
+            <label>Ваше фото: <input
+                name="photo"
+                type="file"
+                class="input"
+                (change)="addPhoto($event)"
+            /></label>
+        </div>
+
+        <div class="btn-container">
+            <button
+                type="button"
+                (click)="appOrderService.prevStep()"
+            >Назад</button>
+            <button
+                [class]="form.valid ? 'green-btn' : ''"
+                type="submit"
+                [disabled]="form.invalid"
+            >Далее</button>
+        </div>
+    </form>
+</div>

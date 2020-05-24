@@ -1,0 +1,28 @@
+.step-title {
+    margin-top: 15px;
+    /* margin-bottom: 10px */
+}
+
+.description {
+    margin-top: 15px
+}
+
+.input {
+    display: block
+}
+
+.forminput {
+    margin-top: 20px
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red
+}
+
+input.ng-valid {
+    border: 1px solid green
+}
+
+.validation {
+    color: red
+}

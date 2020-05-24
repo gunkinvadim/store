@@ -1,0 +1,16 @@
+<div>
+    <h1>Оформление заказа</h1>
+
+    <div
+        *ngIf="!appOrderService.getSuccess() && !appOrderService.getHasError()"
+        [ngSwitch]="appOrderService.getStep()">
+        <app-order-step1 *ngSwitchCase="1"></app-order-step1>
+        <app-order-step2 *ngSwitchCase="2"></app-order-step2>
+        <app-order-step3 *ngSwitchCase="3"></app-order-step3>
+        <app-order-step4 *ngSwitchCase="4"></app-order-step4>
+        <app-order-step5 *ngSwitchCase="5"></app-order-step5>
+    </div>
+
+    <app-order-success *ngIf="appOrderService.getSuccess()"></app-order-success>
+    <app-order-error *ngIf="appOrderService.getHasError()"></app-order-error>
+</div>

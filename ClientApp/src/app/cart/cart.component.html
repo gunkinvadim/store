@@ -1,0 +1,31 @@
+<div>
+    <h1>Корзина</h1>
+    
+    <p *ngIf="!appStoreService.getCartItems().length; else itemList">Корзина пуста</p>
+
+    <ng-template #itemList>
+        <p>В корзине <b>{{appStoreService.getCartItems().length}} товар(ов)</b>
+            на сумму <b>{{appStoreService.getCartSum()}} руб.</b></p>
+
+        <div class="btn-container">
+            <button
+                [class]="!appStoreService.getIsClearing() ? 'red-btn' : ''"
+                [disabled]="appStoreService.getIsClearing()"
+                (click)="appStoreService.clearCart()"
+            >
+                {{appStoreService.getIsClearing() ? 'Подождите...' : 'Очистить корзину'}}
+            </button>
+            <button class="green-btn"
+                [routerLink]="['/order']"
+            >Оформить заказ</button>
+        </div>
+
+        <ul class="itemlist">
+            <app-cart-item
+                *ngFor="let item of appStoreService.getCartItems(); index as idx"
+                [item]="item"
+                [idx]="idx"
+            ></app-cart-item>
+        </ul>
+    </ng-template>
+</div>

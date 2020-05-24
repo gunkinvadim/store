@@ -1,0 +1,165 @@
+<div>
+    <h3 class="step-title">Шаг 4</h3>
+
+    <form
+        [formGroup]="deliveryType"
+    >
+        <div class="forminput">
+            <b>Выберите тип доставки:</b>
+            
+            <label class="radiobtn"><input
+                type="radio"
+                name="deliveryType"
+                formControlName="deliveryType"
+                value="pickup"
+            /> Самовывоз</label>
+            <label class="radiobtn"><input
+                type="radio"
+                name="deliveryType"
+                formControlName="deliveryType"
+                value="mail"
+            /> Доставка почтой</label>
+        </div>
+    </form>
+
+    <form
+        *ngIf="deliveryType.controls.deliveryType.value === 'pickup'"
+        [formGroup]="pickup"
+        (ngSubmit)="submit()"
+    >
+        <hr>
+        <div class="forminput">
+            <b>Выберите город:</b>
+            <select
+                name="city"
+                formControlName="city"
+                class="selectcity"
+            >
+                <option value="Москва">Москва</option>
+                <option value="Воронеж">Воронеж</option>
+            </select>
+        </div>
+
+        <div class="btn-container">
+            <button
+                type="button"
+                (click)="appOrderService.prevStep()"
+            >Назад</button>
+            <button
+                [class]="pickup.valid ? 'green-btn' : ''"
+                type="submit"
+                [disabled]="pickup.invalid"
+            >Далее</button>
+        </div>
+    </form>
+
+    <form
+        *ngIf="deliveryType.controls.deliveryType.value === 'mail'"
+        [formGroup]="mail"
+        (ngSubmit)="submit()"
+    >
+        <hr/>
+
+        <div class="forminput">
+            <label>ФИО получателя:</label>
+            <input
+                type="text"
+                name="fullName"
+                formControlName="fullName"
+                class="input"
+                placeholder="ФИО получателя"
+            />
+            <div
+                *ngIf="mail.get('fullName').invalid && mail.get('fullName').touched"
+                class="validation"
+            >
+                <span *ngIf="mail.get('fullName').errors.required">
+                    Поле не может быть пустым
+                </span>
+            </div>
+        </div>
+
+        <div class="forminput">
+            <label>Телефон получателя:</label>
+            <input
+                type="tel"
+                name="consigneePhone"
+                formControlName="consigneePhone"
+                class="input"
+                placeholder="Телефон получателя"
+            />
+            <div
+                *ngIf="mail.get('consigneePhone').invalid && mail.get('consigneePhone').touched"
+                class="validation"
+            >
+                <span *ngIf="mail.get('consigneePhone').errors.required">
+                    Поле не может быть пустым
+                </span>
+                <span
+                    *ngIf="mail.get('consigneePhone').errors.minlength
+                    || mail.get('consigneePhone').errors.maxlength
+                    || mail.get('consigneePhone').errors.number"
+                >
+                    Некорректный номер
+                </span>
+            </div>
+        </div>
+
+        <div class="forminput">
+            <label>Почтовый индекс:</label>
+            <input
+                type="tel"
+                name="index"
+                formControlName="index"
+                class="input"
+                placeholder="Почтовый индекс"
+            />
+            <div
+                *ngIf="mail.get('index').invalid && mail.get('index').touched"
+                class="validation"
+            >
+                <span *ngIf="mail.get('index').errors.required">
+                    Поле не может быть пустым
+                </span>
+                <span
+                    *ngIf="mail.get('index').errors.minlength
+                    || mail.get('index').errors.maxlength
+                    || mail.get('index').errors.number"
+                >
+                    Индекс должен состоять из 6 цифр
+                </span>
+            </div>
+        </div>
+
+        <div class="forminput">
+            <label>Адрес доставки:</label>
+            <input
+                type="tel"
+                name="address"
+                formControlName="address"
+                class="input"
+                placeholder="Адрес доставки"
+            />
+            <div
+                *ngIf="mail.get('address').invalid && mail.get('address').touched"
+                class="validation"
+            >
+                <span *ngIf="mail.get('address').errors.required">
+                    Поле не может быть пустым
+                </span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button
+                type="button"
+                (click)="appOrderService.prevStep()"
+            >Назад</button>
+            <button
+                [class]="mail.valid ? 'green-btn' : ''"
+                type="submit"
+                [disabled]="mail.invalid"
+            >Далее</button>
+        </div>
+    </form>
+</div>

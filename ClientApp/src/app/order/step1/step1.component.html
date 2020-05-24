@@ -1,0 +1,78 @@
+<div>
+    <h3 class="step-title">Шаг 1</h3>
+
+    <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+    >
+        <div class="forminput">
+            <label>Ваше имя:</label>
+            <input
+                name="name"
+                type="text"
+                class="input"
+                formControlName="name"
+                placeholder="Ваше имя"
+            />
+            <div
+                *ngIf="form.get('name').invalid && form.get('name').touched"
+                class="validation"
+            >
+                <span *ngIf="form.get('name').errors.required">
+                    Поле не может быть пустым
+                </span>
+            </div>
+        </div>
+        <div class="forminput">
+            <label>Телефон:</label>
+            <input
+                name="phone"
+                type="tel"
+                class="input"
+                formControlName="phone"
+                placeholder="Телефон"
+            />
+            <div
+                *ngIf="form.get('phone').invalid && form.get('phone').touched"
+                class="validation"
+            >
+                <span *ngIf="form.get('phone').errors.required">
+                    Поле не может быть пустым
+                </span>
+                <span 
+                    *ngIf="form.get('phone').errors.minlength
+                    || form.get('phone').errors.maxlength
+                    || form.get('phone').errors.number"
+                >
+                    Некорректный номер
+                </span>
+            </div>
+        </div>
+        <div class="forminput">
+            <label><input
+                type="checkbox"
+                formControlName="check"
+            /> Я даю согласие на обработку персональных данных</label>
+            <div
+                *ngIf="form.get('check').invalid && form.get('check').touched"
+                class="validation"
+            >
+                <span *ngIf="form.get('check').errors.checked">
+                    Необходимо согласие на обработку данных
+                </span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button
+                type="button"
+                [routerLink]="['/cart']"
+            >Вернуться в корзину</button>
+            <button
+                [class]="form.valid ? 'green-btn' : ''"
+                type="submit"
+                [disabled]="form.invalid"
+            >Далее</button>
+        </div>
+    </form>
+</div>

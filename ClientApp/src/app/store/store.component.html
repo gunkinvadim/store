@@ -1,0 +1,11 @@
+<div>
+    <h1>Магазин</h1>
+    <p *ngIf="appStoreService.getIsLoading()">Загрузка...</p>
+    <ul class="itemlist">
+        <app-store-item
+            *ngFor="let item of appStoreService.getItems(); index as idx"
+            [item]="item"
+            [idx]="idx"
+        ></app-store-item>
+    </ul>
+</div>

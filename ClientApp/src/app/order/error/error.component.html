@@ -1,0 +1,16 @@
+<div>
+    <p><b>Произошла ошибка!</b></p>
+    <p>Повторите отправку данных.</p>
+
+    <div class="btn-container">
+        <button
+            type="button"
+            (click)="appOrderService.setHasError(false)"
+        >Вернуться к оформлению</button>
+        <button
+            [class]="!appOrderService.getIsloading() ? 'green-btn' : ''"
+            [disabled]="appOrderService.getIsloading()"
+            (click)="submit()"
+        >Повторить отправку</button>
+    </div>
+</div>

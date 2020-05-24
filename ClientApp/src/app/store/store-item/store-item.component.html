@@ -1,0 +1,37 @@
+<li class="store-item">
+    <h3>{{idx + 1}}. {{item.name.charAt(0).toUpperCase() + item.name.slice(1)}}</h3>
+    <ul>
+        <li><b>Цвет:</b> {{item.color}}</li>
+        <li><b>Формат:</b> {{item.format}}</li>
+        <li><b>Цена:</b> {{item.price}} руб.</li>
+        <li class="count">
+            <b>Количество упаковок: </b>
+            <div class="counter">
+                <button
+                    class="count-btn"
+                    (click)="appStoreService.decCount(item.id)"
+                ><div>-</div></button>
+                <span> {{item.count}} </span>
+                <button
+                    class="count-btn"
+                    (click)="appStoreService.incCount(item.id)"
+                >+</button>
+            </div>
+        </li>
+        <li><b>Сумма:</b> {{item.count * item.price}} руб.</li>
+    </ul>
+
+    <div>
+        <button
+            *ngIf="!item.added; else elseBtn"
+            (click)="appStoreService.addToCart(item.id)"
+            [disabled]="item.isLoading"
+        >{{item.isLoading ? 'Подождите...' : 'Добавить в корзину'}}</button>
+        <ng-template #elseBtn>
+            <button
+                (click)="appStoreService.addToCart(item.id)"
+                disabled
+            >&#10004; Товар добавлен в корзину</button>
+        </ng-template>
+    </div>
+</li>

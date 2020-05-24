@@ -1,0 +1,57 @@
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+button {
+    border-radius: 10px;
+    border: 2px solid gray;
+}
+
+button:focus {
+    outline: none
+}
+
+.itemlist {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0
+}
+
+.store-item {
+    border: 1px dashed gray;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.store-item ul {
+    margin-top: 15px;
+    margin-bottom: 15px
+}
+
+.app-container {
+    padding-bottom: 20px
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.green-btn {
+    background-color: green;
+    border: 2px solid green;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.red-btn {
+    background-color: red;
+    border: 2px solid red;
+    color: #ffffff;
+    font-weight: 700;
+}

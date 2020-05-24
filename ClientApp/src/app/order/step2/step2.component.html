@@ -1,0 +1,36 @@
+<div>
+    <h3 class="step-title">Шаг 2</h3>
+
+    <p class="description">
+        Выбрано <b>{{appStoreService.getCartItems().length}} товар(ов)</b>
+        на сумму <b>{{appStoreService.getCartSum()}} руб.</b>
+    </p>
+
+    <ul *ngIf="appStoreService.getCartItems().length" class="itemlist">
+        <li class="store-item"
+            *ngFor="let item of appStoreService.getCartItems(); index as idx"
+        >
+            <h3>{{idx + 1}}. {{item.name.charAt(0).toUpperCase() + item.name.slice(1)}}</h3>
+            <ul>
+                <li><b>Цвет:</b> {{item.color}}</li>
+                <li><b>Формат:</b> {{item.format}}</li>
+                <li><b>Цена:</b> {{item.price}}</li>
+                <li class="count">
+                    <b>Количество упаковок:</b> {{item.count}}
+                </li>
+                <li><b>Сумма:</b> {{item.count * item.price}} руб.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="btn-container">
+        <button
+            type="button"
+            (click)="appOrderService.prevStep()"
+        >Назад</button>
+        <button
+            class="green-btn"
+            (click)="submit()"
+        >Далее</button>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.forminput b {
+    display: block;
+    margin-bottom: 10px
+}
+
+.radiobtn {
+    display: block
+}
+
+.selectcity {
+    display: block;
+    margin-top: 10px
+}
+
+.input {
+    display: block
+}

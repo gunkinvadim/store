@@ -1,0 +1,15 @@
+.counter {
+    display: inline-block;
+    margin-left: 5px
+}
+
+.count-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    padding-bottom: 5px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 700
+}

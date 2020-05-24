@@ -1,0 +1,35 @@
+<div>
+    <h3 class="step-title">Шаг 5</h3>
+
+    <p class="description">Проверьте правильность введённых данных</p>
+
+    <p><b>Имя:</b> {{appOrderService.getOrderData().name}}</p>
+    <p><b>Телефон:</b> {{appOrderService.getOrderData().phone}}</p>
+    <p><b>СНИЛС:</b> {{appOrderService.getOrderData().insnum}}</p>
+    <div [ngSwitch]="appOrderService.getOrderData().deliveryType">
+        <div *ngSwitchCase="'pickup'">
+            <p><b>Способ доставки:</b>
+                самовывоз из г. {{appOrderService.getOrderData().city}}</p>
+        </div>
+        <div *ngSwitchCase="'mail'">
+            <p><b>Способ доставки:</b> почтовое отправление</p>
+            <p><b>ФИО получателя:</b> {{appOrderService.getOrderData().fullName}}</p>
+            <p><b>Телефон получателя:</b> {{appOrderService.getOrderData().consigneePhone}}</p>
+            <p><b>Почтовый индекс:</b> {{appOrderService.getOrderData().index}}</p>
+            <p><b>Адрес доставки:</b> {{appOrderService.getOrderData().address}}</p>
+        </div>
+    </div>
+
+
+    <div class="btn-container">
+        <button
+            type="button"
+            (click)="appOrderService.prevStep()"
+        >Назад</button>
+        <button
+            [class]="!appOrderService.getIsloading() ? 'green-btn' : ''"
+            [disabled]="appOrderService.getIsloading()"
+            (click)="submit()"
+        >{{appOrderService.getIsloading() ? 'Подождите...' : 'Подтвердить заказ'}}</button>
+    </div>
+</div>

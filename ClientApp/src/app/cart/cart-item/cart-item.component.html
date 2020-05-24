@@ -1,0 +1,17 @@
+<li class="store-item">
+    <h3>{{idx + 1}}. {{item.name.charAt(0).toUpperCase() + item.name.slice(1)}}</h3>
+    <ul>
+        <li><b>Цвет:</b> {{item.color}}</li>
+        <li><b>Формат:</b> {{item.format}}</li>
+        <li><b>Цена:</b> {{item.price}} руб.</li>
+        <li class="count">
+            <b>Количество упаковок:</b> {{item.count}}
+        </li>
+        <li><b>Сумма:</b> {{item.count * item.price}} руб.</li>
+    </ul>
+    
+    <button
+        (click)="appStoreService.removeFromCart(item.id)"
+        [disabled]="item.isLoading"
+    >{{item.isLoading ? 'Подождите...' : 'Удалить из корзины'}}</button>
+</li>
