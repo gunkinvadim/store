@@ -6,6 +6,7 @@ h1 {
 button {
     border-radius: 10px;
     border: 2px solid gray;
+    padding: 5px 7px;
 }
 
 button:focus {

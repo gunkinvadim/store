@@ -91,7 +91,7 @@ export class AppStoreService {
             if (item.id === id) {
                 return {
                     ...item,
-                    count: item.count && item.count - 1,
+                    count: item.count > 1 ? item.count - 1 : 1,
                     added: false
                 }
             } else {
@@ -105,7 +105,7 @@ export class AppStoreService {
             if (item.id === id) {
                 return {
                     ...item,
-                    count: item.count ? item.count + 1 : 2,
+                    count: item.count ? item.count + 1 : 1,
                     added: false
                 }
             } else {

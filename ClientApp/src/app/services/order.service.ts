@@ -96,39 +96,23 @@ export class AppOrderService {
 
 
     nextStep() {
-        this.data = {
-            ...this.data,
-            step: this.data.step + 1
-        }
-
+        this.data.step++
     }
 
     prevStep() {
-        this.data = {
-            ...this.data,
-            step: this.data.step - 1
-        }
+        this.data.step--
     }
 
     resetStep() {
-        this.data = {
-            ...this.data,
-            step: 1
-        }
+        this.data.step = 1
     }
 
     setSuccess(success: boolean) {
-        this.data = {
-            ...this.data,
-            success
-        }
+        this.data.success = success
     }
 
     setHasError(hasError: boolean) {
-        this.data = {
-            ...this.data,
-            hasError
-        }
+        this.data.hasError = hasError
     }
 
     clearOrder() {
